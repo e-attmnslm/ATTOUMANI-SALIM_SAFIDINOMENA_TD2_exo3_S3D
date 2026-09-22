@@ -2,14 +2,14 @@ import java.util.HashMap;
 
 public class Formation {
     private String id_form;
-    private HashMap<String,Double> matieres;
+    private HashMap<String,Integer> matieres;
 
     public Formation(String id_form) {
         this.id_form = id_form;
-        this.matieres = new HashMap<String,Double>();
+        this.matieres = new HashMap<String,Integer>();
     }
 
-    public void ajoutMat(String s, double n){
+    public void ajoutMat(String s, int n){
         if (matieres.containsKey(s)){
             System.out.println("Matière existante");
         } else {
@@ -25,7 +25,7 @@ public class Formation {
         }
     }
 
-    public double getCoef(String s){
+    public int getCoef(String s){
         return matieres.get(s);
     }
 
