@@ -28,6 +28,8 @@ public class Formation {
     public int getCoef(String s){
         return matieres.get(s);
     }
-
+    public HashMap<String,Integer> getmat(){
+        return this.matieres;
+    }
 
 }

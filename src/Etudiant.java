@@ -23,19 +23,25 @@ public class Etudiant {
         return this.notes;
     }
 
-    public void ajoutNote(String mat,Double note) {
-        if(!this.notes.containsKey(mat)){
-            ArrayList<Double> d= new ArrayList<Double>();
-            d.add(note);
-            this.notes.put(mat,d);
-            System.out.println("la note a bien pu être ajouter");
-        }
-        else{
+    public boolean ajoutNote(String mat,Double note) {
+        if(note>=0.0 && note <=20.0){
+            if(!this.notes.containsKey(mat)){
+                ArrayList<Double> d= new ArrayList<Double>();
+                d.add(note);
+                this.notes.put(mat,d);
+                System.out.println("la note a bien pu être ajouter");
+            }
+            else{
 
-            ArrayList<Double> d= this.notes.get(mat);
-            d.add(note);
-            this.notes.replace(mat,d);
+                ArrayList<Double> d= this.notes.get(mat);
+                d.add(note);
+                this.notes.replace(mat,d);
+            }
+            return true;
         }
+        return false;
+
+
 
     }
 
