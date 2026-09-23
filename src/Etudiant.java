@@ -13,6 +13,15 @@ public class Etudiant {
         this.id=i;
         this.form = f;
         this.notes = new HashMap<String,ArrayList<Double>>();
+        Set<String> keys = f.getmat().keySet();
+        Iterator<String> iter = keys.iterator();
+        while(iter.hasNext() ) {
+
+            String m = iter.next();
+            this.notes.put(m,new ArrayList<Double>());
+
+        }
+
     }
 
     public Identite getId() {
@@ -25,19 +34,18 @@ public class Etudiant {
 
     public boolean ajoutNote(String mat,Double note) {
         if(note>=0.0 && note <=20.0){
-            if(!this.notes.containsKey(mat)){
-                ArrayList<Double> d= new ArrayList<Double>();
-                d.add(note);
-                this.notes.put(mat,d);
-                System.out.println("la note a bien pu être ajouter");
-            }
-            else{
-
+            if(this.notes.containsKey(mat)){
                 ArrayList<Double> d= this.notes.get(mat);
                 d.add(note);
                 this.notes.replace(mat,d);
+                System.out.println("la note a bien pu être ajouter");
+                return true;
+
             }
-            return true;
+            else{
+                System.out.println("la matière n est pas dans la formation");
+                return false;
+            }
         }
         return false;
 
@@ -55,10 +63,14 @@ public class Etudiant {
                 somme+=d;
                 coef++;
             }
+            if(coef>0)return somme/coef;
+
+            else return -1.0;
 
 
         }
-        return somme/coef;
+        return -2.0;
+
     }
 
     public Double calcMoyGen() {
@@ -66,13 +78,14 @@ public class Etudiant {
         Iterator<String> iter = keys.iterator();
         Double moyGen=0.0;
         int totc=0;
-        while(iter.hasNext() ) {
+        while(iter.hasNext()) {
 
             String m = iter.next();
             int coef = this.form.getCoef(m);
-            moyGen+=this.calcMoyMat(m)*coef;
-            totc+=coef;
-
+            if(this.calcMoyMat(m)!=-1.0){
+                moyGen+=this.calcMoyMat(m)*coef;
+                totc+=coef;
+            }
         }
         return moyGen/totc;
     }
