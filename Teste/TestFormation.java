@@ -39,7 +39,7 @@ public class TestFormation {
     }
     @Test
     public void testGetCoef(){
-        assertEquals(8,form1.getCoef("NSI"));
+        assertEquals(4,form3.getCoef("SVT"));
     }
 
 }
