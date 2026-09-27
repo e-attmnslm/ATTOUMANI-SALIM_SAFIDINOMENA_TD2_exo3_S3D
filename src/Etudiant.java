@@ -24,6 +24,9 @@ public class Etudiant {
 
     }
 
+    public Formation getForm() {
+        return this.form;
+    }
     public Identite getId() {
         return this.id;
     }
