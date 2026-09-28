@@ -36,7 +36,7 @@ public class Etudiant {
         return form;
     }
 
-    public void ajoutNote(String mat, Double note) {
+    public boolean ajoutNote(String mat, Double note) {
         if (note < 0.0) note = 0.0;
         if (note > 20.0) note = 20.0;
         if (this.notes.containsKey(mat)){
@@ -44,12 +44,13 @@ public class Etudiant {
             d.add(note);
             this.notes.replace(mat,d);
             System.out.println("la note a bien pu être ajouter");
+            return true;
+
         }
-        else {
-            ArrayList<Double> d = new ArrayList<Double>();
-            d.add(note);
-            this.notes.put(mat,d);
-            System.out.println("la matière vient d'être ajouter");
+        else{
+            System.out.println("la matière n est pas dans la formation");
+            return false;
+
         }
 
 
