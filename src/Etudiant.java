@@ -32,22 +32,25 @@ public class Etudiant {
         return this.notes;
     }
 
-    public boolean ajoutNote(String mat,Double note) {
-        if(note>=0.0 && note <=20.0){
-            if(this.notes.containsKey(mat)){
-                ArrayList<Double> d= this.notes.get(mat);
-                d.add(note);
-                this.notes.replace(mat,d);
-                System.out.println("la note a bien pu être ajouter");
-                return true;
+    public Formation getForm() {
+        return form;
+    }
 
-            }
-            else{
-                System.out.println("la matière n est pas dans la formation");
-                return false;
-            }
+    public void ajoutNote(String mat, Double note) {
+        if (note < 0.0) note = 0.0;
+        if (note > 20.0) note = 20.0;
+        if (this.notes.containsKey(mat)){
+            ArrayList<Double> d= this.notes.get(mat);
+            d.add(note);
+            this.notes.replace(mat,d);
+            System.out.println("la note a bien pu être ajouter");
         }
-        return false;
+        else {
+            ArrayList<Double> d = new ArrayList<Double>();
+            d.add(note);
+            this.notes.put(mat,d);
+            System.out.println("la matière vient d'être ajouter");
+        }
 
 
 
