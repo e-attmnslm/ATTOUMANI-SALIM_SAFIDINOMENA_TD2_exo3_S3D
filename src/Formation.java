@@ -14,6 +14,7 @@ public class Formation {
             System.out.println("Matière existante");
         } else {
             matieres.put(s,n);
+            System.out.println("La matière est bien ajouté");
         }
     }
 
@@ -32,4 +33,11 @@ public class Formation {
         return this.matieres;
     }
 
+    public String getId_form() {
+        return id_form;
+    }
+
+    public HashMap<String, Integer> getMatieres() {
+        return matieres;
+    }
 }
