@@ -33,7 +33,7 @@ public class Formation {
         return this.matieres;
     }
 
-    public String getId_form() {
+    public String getId() {
         return id_form;
     }
 
