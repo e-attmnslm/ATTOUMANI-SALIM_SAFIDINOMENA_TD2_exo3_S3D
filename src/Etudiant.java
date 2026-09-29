@@ -37,6 +37,7 @@ public class Etudiant {
     }
 
     public boolean ajoutNote(String mat, Double note) {
+        if(note ==null) return false;
         if (note < 0.0) note = 0.0;
         if (note > 20.0) note = 20.0;
         if (this.notes.containsKey(mat)){
@@ -45,12 +46,10 @@ public class Etudiant {
             this.notes.replace(mat,d);
             System.out.println("la note a bien pu être ajouter");
             return true;
-
         }
         else{
             System.out.println("la matière n est pas dans la formation");
             return false;
-
         }
 
 
@@ -62,19 +61,14 @@ public class Etudiant {
         Double somme=0.0;
         if(this.getNotes().containsKey(mat)){
             ArrayList<Double> tab =this.getNotes().get(mat);
-
             for(Double d:tab){
                 somme+=d;
                 coef++;
             }
-            if(coef>0)return somme/coef;
-
+            if(coef > 0)return somme/coef;
             else return -1.0;
-
-
         }
         return -2.0;
-
     }
 
     public Double calcMoyGen() {
