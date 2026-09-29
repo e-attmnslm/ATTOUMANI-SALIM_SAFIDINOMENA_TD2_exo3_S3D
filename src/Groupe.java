@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Groupe {
 
@@ -46,6 +47,22 @@ public class Groupe {
         return false;
     }
 
+    public ArrayList<Etudiant> triAlpha(){
+        Collections.sort(this.etudiants);
+        return this.etudiants;
+    }
 
+    public ArrayList<Etudiant> triAntiAlpha(){
+        Collections.sort(this.etudiants);
+        Collections.reverse(this.etudiants);
+        return this.etudiants;
+    }
 
+    public ArrayList<Etudiant> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setEtudiants(ArrayList<Etudiant> etudiants) {
+        this.etudiants = etudiants;
+    }
 }

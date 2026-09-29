@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Etudiant {
+public class Etudiant implements Comparable<Etudiant> {
 
     private Identite id;
     private HashMap<String, ArrayList<Double>> notes;
@@ -89,10 +89,14 @@ public class Etudiant {
     }
 
 
+    @Override
+    public int compareTo(Etudiant e) {
+        return this.id.getNom().compareTo(e.id.getNom());
+    }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return this.id.toString();
+    }
 }
 
