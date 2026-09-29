@@ -1,3 +1,5 @@
-.idea
-out
+bin/
+out/
 *.class
+
+.idea/
