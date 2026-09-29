@@ -37,6 +37,7 @@ public class Etudiant {
     }
 
     public boolean ajoutNote(String mat, Double note) {
+        if(note ==null) return false;
         if (note < 0.0) note = 0.0;
         if (note > 20.0) note = 20.0;
         if (this.notes.containsKey(mat)){
