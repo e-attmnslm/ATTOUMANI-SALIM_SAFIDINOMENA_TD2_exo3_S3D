@@ -3,8 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class testEtudiant {
     private Formation f ;
@@ -13,32 +12,23 @@ public class testEtudiant {
     @BeforeEach
     public void PreparationDonnee(){
         this.f = new Formation("form1");
+        f.ajoutMat("mat1",1);
         this.e = new Etudiant(new Identite("123","nom1","prenom1"),f);
     }
 
     @Test
     public void test_matiere_vide(){
-        assertTrue(e.getForm().getMatieres().isEmpty(), "Matières dans formation doit être vide");
+        assertFalse(e.getForm().getMatieres().isEmpty(), "Matières dans formation doit être vide");
     }
-
-//    @Test
-//    public void test_calcul_moyenne_sans_notes(){
-//        e.ajoutNote("mat1",null);
-//        System.out.println(e.calcMoyMat("mat1"));
-//
-//    }
 
     @Test
     public void test_ajoutNote_NonMatiere(){
-        e.ajoutNote("mat2", 10.0);
-        assertTrue(e.getNotes().containsKey("mat2") && e.getNotes().get("mat2").getLast() == 10.0, "Si la matière n'existe pas elle est ajouter");
-
+        assertFalse(e.ajoutNote("mat2", 10.0), "Si la matière n'existe pas on return false");
     }
 
     @Test
     public void test_ajoutNote_Matiere(){
-        e.ajoutNote("mat2", 11.0);
-        assertTrue(e.getNotes().containsKey("mat2") && e.getNotes().get("mat2").getLast() == 11.0, "La matière doit être ajouter");
+        assertTrue(e.ajoutNote("mat1", 11.0), "Si la matière est ajouter on renvoie true");
     }
 
     @Test
@@ -59,10 +49,16 @@ public class testEtudiant {
         assertTrue(e.getNotes().containsKey("mat1") && noteVerif, "ladernière note doit être égale à 20");
     }
 
-//    @Test
-//    public void  test_Calcul_Moyenne(){
-//
-//    }
+    @Test
+    public void  test_Calcul_Moyenne(){
+        assertEquals(-1.0,e.calcMoyMat("mat1"),"doit retourner -1.0");
+    }
 
+    @Test
+    public void test_calcul_moyenne_sans_notes(){
+        e.ajoutNote("mat1",null);
+        System.out.println(e.calcMoyMat("mat1"));
+
+    }
 
 }

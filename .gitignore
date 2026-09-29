@@ -1,7 +1,3 @@
-# Fichiers compilés Java
-out/
-bin/
+.idea
+out
 *.class
-
-# Configuration IntelliJ IDEA
-.idea/
