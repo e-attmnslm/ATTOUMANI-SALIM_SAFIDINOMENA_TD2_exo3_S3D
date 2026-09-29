@@ -25,4 +25,13 @@ public class TestGroupe {
         assertEquals(true,g1.present(e1));
         assertEquals(false,g1.present(e2));
     }
+    @Test
+    public void testMoyMat() {
+        //...
+    }
+
+    @Test
+    public void testMoyGen() {
+        //...
+    }
 }

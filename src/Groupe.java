@@ -46,6 +46,34 @@ public class Groupe {
         return false;
     }
 
+    public double calcMoyMat(String mat){
+        if (this.form.getmat().containsKey(mat)) {
+            int coef = 0;
+            double m = 0.0;
+            for(Etudiant e : this.etudiants){
+                m+=e.calcMoyMat(mat);
+                coef++;
+            }
+            return m/coef;
+
+        }
+        return -1.0;
+
+    }
+
+    public double calcMoyGen(){
+
+        int coef = 0;
+        double m = 0.0;
+        for(Etudiant e : this.etudiants){
+            m+=e.calcMoyGen();
+            coef++;
+        }
+        return m/coef;
+
+
+
+    }
 
 
 }
