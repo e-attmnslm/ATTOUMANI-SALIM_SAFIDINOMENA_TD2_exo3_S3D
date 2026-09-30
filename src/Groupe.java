@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Groupe {
 
@@ -49,6 +50,18 @@ public class Groupe {
 
     public ArrayList<Etudiant> triAlpha(){
         Collections.sort(this.etudiants);
+        return this.etudiants;
+    }
+
+    public ArrayList<Etudiant> triParMerite() {
+        Collections.sort(this.etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant e1, Etudiant e2) {
+                Double moy1 = e1.calcMoyGen();
+                Double moy2 = e2.calcMoyGen();
+                return Double.compare(moy2, moy1);
+            }
+        });
         return this.etudiants;
     }
 
